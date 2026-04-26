@@ -1,11 +1,44 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
+const PORT = 3000;
+
 app.use(cors());
+app.use(bodyParser.json());
 
-const requestRoutes = require("./routes/requests");
+// TEST ROUTE
+app.get("/", (req, res) => {
+    res.send("FoodBridge Backend Running");
+});
 
-app.use("/requests", requestRoutes);
+// DONATE BUTTON
+app.post("/donate", (req, res) => {
+    console.log("Donate button clicked");
+    res.json({ message: "Thank you for donating food! ❤️" });
+});
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+// CARD ACTIONS
+app.post("/action", (req, res) => {
+    const { type } = req.body;
+
+    let message = "";
+
+    if (type === "donate") {
+        message = "Redirecting to donation system...";
+    } else if (type === "support") {
+        message = "Finding support near you...";
+    } else if (type === "volunteer") {
+        message = "Volunteer request received!";
+    }
+
+    console.log("Action:", type);
+
+    res.json({ message });
+});
+
+// START SERVER
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
