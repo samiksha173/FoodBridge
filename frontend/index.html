@@ -2,135 +2,251 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>FoodBridge AI Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodBridge AI – Ending Hunger with Intelligence and Action</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="logo">FoodBridge</div>
-        <nav>
-            <a href="#">Dashboard</a>
-            <a href="#">Donations</a>
-            <a href="#">Impact</a>
-            <a href="#">Logistics</a>
-        </nav>
-        <button class="donate-btn">Quick Donate</button>
-    </header>
+    <!-- ======= NAVBAR ======= -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">FoodBridge <span>AI</span></a>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Ending Hunger with <span>Intelligence</span> and Action.</h1>
-            <p>AI-powered food redistribution to eliminate waste and feed communities.</p>
-            <div class="buttons">
-                <button class="primary">Donate Food Now</button>
-                <button class="secondary">Explore Our Map</button>
-            </div>
-        </div>
-
-        <div class="hero-card">
-            <h3>AI Support</h3>
-            <p>Predictive Analysis</p>
-            <div class="box-illustration">📦📦📦</div>
-        </div>
-    </section>
-
-    <!-- STATS -->
-    <section class="stats">
-        <div class="stat">
-            <h2>1,248,590</h2>
-            <p>Meals Shared</p>
-        </div>
-        <div class="stat">
-            <h2>450.2 Tons</h2>
-            <p>Waste Diverted</p>
-        </div>
-        <div class="stat">
-            <h2>142 Zones</h2>
-            <p>Active Areas</p>
-        </div>
-    </section>
-
-    <!-- MAP -->
-    <section class="map">
-        <h3>Global Activity Heatmap</h3>
-        <div class="map-box">Map Visualization</div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features">
-        <div class="feature-card green">
-            <h4>Route Optimization</h4>
-            <p>Cut fuel emissions by 40%</p>
-        </div>
-
-        <div class="feature-card blue">
-            <h4>Smart Matching</h4>
-            <p>Match supply with demand instantly</p>
-        </div>
-
-        <div class="feature-text">
-            <h2>AI meets Human Compassion</h2>
-            <p>Predict hunger spikes and optimize delivery routes.</p>
-            <ul>
-                <li>Demand Forecasting</li>
-                <li>Dynamic Routing</li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Dashboard</a></li>
+                <li><a href="donate.html">Donations</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="logistics.html">Logistics</a></li>
             </ul>
+
+            <div class="nav-search">
+                <span>🔍</span> Search areas…
+            </div>
+
+            <div class="nav-actions">
+                <div class="nav-icon" title="Notifications">🔔</div>
+                <div class="nav-icon" title="Settings">⚙️</div>
+                <a href="donate.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">Quick
+                    Donate</a>
+                <div class="nav-avatar" title="Account">A</div>
+                <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======= HERO ======= -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <div class="hero-dot"></div>
+                    AI-Driven Logistics for Humanitarian Impact
+                </div>
+                <h1>Ending Hunger with <em>Intelligence</em> and <strong>Action.</strong></h1>
+                <p class="hero-desc">
+                    FoodBridge AI leverages real-time predictive analytics to capture surplus food before it's wasted,
+                    matching it instantly with communities in need. Precision logistics meets local heart.
+                </p>
+                <div class="hero-cta">
+                    <a href="donate.html" class="btn btn-primary">🌱 Donate Food Now</a>
+                    <a href="logistics.html" class="btn btn-outline">Explore Our Map</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="predictive-badge">
+                        <div class="pred-dot"></div>
+                        Predictive Analysis — Surplus spike detected in Downtown Sector. Redirecting transport #11.
+                    </div>
+                    <div class="hero-card-title">CAPTAIN <span>SUPPORT</span></div>
+                    <div class="hero-stats-row">
+                        <div class="hero-stat"><strong>CAFÉ QUALITY CO</strong>Santo Tour Captiedielwork</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ACTION CARDS -->
+    <!-- ======= METRICS BAR ======= -->
+    <section class="metrics">
+        <div class="container">
+            <div class="metric-item">
+                <div class="metric-icon">🍽️</div>
+                <div class="metric-value" id="mealsCount">0</div>
+                <div class="metric-label">Meals Shared Locally</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-icon">🌿</div>
+                <div class="metric-value" id="wasteCount">0</div>
+                <div class="metric-label">Waste Diverted</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-icon">📍</div>
+                <div class="metric-value" id="zonesCount">0</div>
+                <div class="metric-label">Active Relief Zones</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= HEATMAP ======= -->
+    <section class="heatmap-section">
+        <div class="container">
+            <div class="heatmap-header">
+                <h3>Global Activity Heatmap</h3>
+                <div class="live-badge">
+                    <div class="live-dot"></div> Live Data Feed
+                </div>
+            </div>
+            <div class="map-container">
+                <div class="map-grid"></div>
+                <div class="map-pins" id="mapPins"></div>
+                <div class="map-placeholder">Live route data loading…</div>
+            </div>
+            <div class="map-legend">
+                <div class="map-legend-item">
+                    <div class="legend-dot" style="background:#22a962"></div> 12 En Route
+                </div>
+                <div class="map-legend-item">
+                    <div class="legend-dot" style="background:#e85d20"></div> 4 High Need
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= FEATURES ======= -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-visual">
+                <div class="feature-card highlight">
+                    <div class="fc-icon">🛣️</div>
+                    <div class="fc-title">Route Optimization</div>
+                    <div class="fc-label">Cutting fuel emissions by 40% through intelligent fleet routing.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="fc-icon">📊</div>
+                    <div class="fc-title">Demand Forecast</div>
+                    <div class="fc-label">AI predicts need 48 hrs ahead.</div>
+                </div>
+                <div class="feature-card dark">
+                    <div class="fc-icon">💡</div>
+                    <div class="fc-title">Smart Matching</div>
+                    <div class="fc-label">Matching donor shelf-life with recipient demand in milliseconds.</div>
+                </div>
+            </div>
+
+            <div class="features-text">
+                <div class="section-tag">The FoodBridge Advantage</div>
+                <h2>Artificial Intelligence meets Human Compassion</h2>
+                <p>The problem isn't a lack of food; it's a lack of connection. Our proprietary AI engine, "BridgeFlow",
+                    solves the last-mile delivery challenge by predicting surplus cycles and optimising volunteer
+                    routes.</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="fi-icon">📈</div>
+                        <div>
+                            <div class="fi-title">Demand Forecasting</div>
+                            <div class="fi-desc">Predicts community hunger spikes before they happen based on regional
+                                economic data.</div>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="fi-icon">🚦</div>
+                        <div>
+                            <div class="fi-title">Dynamic Routing</div>
+                            <div class="fi-desc">Real-time traffic and perishability tracking ensures food arrives
+                                fresh, every time.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= ACTIONS ======= -->
     <section class="actions">
-        <h2>How will you bridge the gap?</h2>
-
-        <div class="cards">
-            <div class="card">
-                <h3>Donate Food</h3>
-                <p>Restaurants and retailers can donate surplus food.</p>
-                <button>Register</button>
+        <div class="container">
+            <div class="actions-header">
+                <h2>How will you bridge the gap?</h2>
+                <p>Join a network of thousands working together to eliminate food waste and hunger in our lifetime.</p>
             </div>
-
-            <div class="card">
-                <h3>Find Support</h3>
-                <p>Access food banks and community kitchens.</p>
-                <button>Request</button>
-            </div>
-
-            <div class="card">
-                <h3>Volunteer</h3>
-                <p>Help deliver food across your city.</p>
-                <button>Apply</button>
+            <div class="action-cards">
+                <div class="card">
+                    <div class="card-icon">🏪</div>
+                    <h3>Donate Food</h3>
+                    <p>Retailers, restaurants, and wholesalers can list surplus inventory for immediate local pickup.
+                    </p>
+                    <a href="donate.html" class="card-link">Register as Donor →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❤️</div>
+                    <h3>Find Support</h3>
+                    <p>Food banks and community kitchens can request specific supplies to meet their local demand.</p>
+                    <a href="request.html" class="card-link">Request Resources →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚴</div>
+                    <h3>Volunteer</h3>
+                    <p>Join our logistics fleet as a courier. Use your own vehicle to deliver hope across your city.</p>
+                    <a href="volunteer.html" class="card-link">Apply to Fleet →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ======= FOOTER ======= -->
     <footer>
-        <div class="footer-content">
-            <div>
-                <h3>FoodBridge AI</h3>
-                <p>Ending hunger with AI.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">FoodBridge <span>AI</span></span>
+                    <p>Harnessing the power of AI to create a world where no edible food goes to waste and no human goes
+                        hungry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="index.html">Smart Dashboard</a>
+                    <a href="impact.html">Impact Reports</a>
+                    <a href="logistics.html">Live Heatmap</a>
+                    <a href="logistics.html">Route Optimization</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="donate.html">Become a Donor</a>
+                    <a href="request.html">Find a Food Bank</a>
+                    <a href="volunteer.html">Volunteer Fleet</a>
+                    <a href="#">Corporate Partners</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="font-size:.8rem;color:rgba(255,255,255,.45);margin-bottom:12px;">Stay updated on our
+                        global impact.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email address" id="footerEmail" />
+                        <button onclick="subscribeNewsletter()" title="Subscribe">→</button>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <h4>Platform</h4>
-                <p>Dashboard</p>
-                <p>Reports</p>
-            </div>
-
-            <div>
-                <h4>Community</h4>
-                <p>Donate</p>
-                <p>Volunteer</p>
+            <div class="footer-bottom">
+                <p>© 2024 FoodBridge AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Ethical AI Charter</a>
+                </div>
             </div>
         </div>
-
-        <p class="copyright">© 2026 FoodBridge</p>
     </footer>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span id="toastMsg">Action completed!</span>
+    </div>
 
     <script src="script.js"></script>
 </body>

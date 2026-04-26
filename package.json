@@ -1,25 +1,24 @@
 {
-  "name": "foodbridge",
+  "name": "foodbridge-ai",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "FoodBridge AI — Ending Hunger with Intelligence and Action",
+  "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "echo \"No tests configured yet\" && exit 0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/samiksha173/FoodBridge.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/samiksha173/FoodBridge/issues"
-  },
-  "homepage": "https://github.com/samiksha173/FoodBridge#readme",
+  "keywords": ["foodbridge", "ai", "food-waste", "humanitarian", "logistics"],
+  "author": "FoodBridge AI Team",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "^2.2.2",
-    "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

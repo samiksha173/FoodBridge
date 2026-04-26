@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logistics – FoodBridge AI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">FoodBridge <span>AI</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="donate.html">Donations</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="logistics.html" class="active">Logistics</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="nav-icon">🔔</div>
+                <div class="nav-icon">⚙️</div>
+                <a href="donate.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">Quick
+                    Donate</a>
+                <div class="nav-avatar">A</div>
+                <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);">BridgeFlow AI
+            </div>
+            <h1>Logistics & Route Optimization</h1>
+            <p>Real-time delivery intelligence. Every route calculated to minimise time, emissions, and spoilage.</p>
+        </div>
+    </section>
+
+    <!-- Live Map -->
+    <section style="padding:60px 0;background:var(--gray-light);">
+        <div class="container">
+            <div class="heatmap-header">
+                <h3>Live Delivery Heatmap</h3>
+                <div class="live-badge">
+                    <div class="live-dot"></div> Live Data Feed
+                </div>
+            </div>
+            <div class="route-map">
+                <div class="map-grid"></div>
+                <div class="map-pins" id="logMapPins"></div>
+                <div class="route-overlay">Interactive map — real-time routes loaded here</div>
+            </div>
+            <div class="map-legend" style="margin-top:16px;">
+                <div class="map-legend-item">
+                    <div class="legend-dot" style="background:#22a962"></div> Active Pickup
+                </div>
+                <div class="map-legend-item">
+                    <div class="legend-dot" style="background:#e85d20"></div> High Need Zone
+                </div>
+                <div class="map-legend-item">
+                    <div class="legend-dot" style="background:#3b82f6"></div> In Transit
+                </div>
+                <div class="map-legend-item">
+                    <div class="legend-dot" style="background:#f59e0b"></div> Awaiting Pickup
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Row -->
+    <section style="padding:60px 0;">
+        <div class="container">
+            <div class="logistics-stats">
+                <div class="log-stat">
+                    <div class="log-stat-val" id="logRoutes">247</div>
+                    <div class="log-stat-label">Routes Optimised Today</div>
+                </div>
+                <div class="log-stat">
+                    <div class="log-stat-val" id="logActive">38</div>
+                    <div class="log-stat-label">Active Deliveries</div>
+                </div>
+                <div class="log-stat">
+                    <div class="log-stat-val" id="logEmission">40%</div>
+                    <div class="log-stat-label">Emission Reduction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Active Deliveries Table -->
+    <section style="padding:0 0 72px;">
+        <div class="container">
+            <div style="margin-bottom:24px;">
+                <div class="section-tag">Active Routes</div>
+                <h2 style="font-family:var(--font-head);font-size:1.6rem;font-weight:800;">Current Delivery Log</h2>
+            </div>
+            <div
+                style="background:white;border:1px solid #e4ebe6;border-radius:var(--radius);overflow:hidden;box-shadow:var(--card-shadow);">
+                <table style="width:100%;border-collapse:collapse;font-size:.85rem;" id="deliveryTable">
+                    <thead>
+                        <tr style="background:var(--gray-light);">
+                            <th
+                                style="text-align:left;padding:14px 20px;font-weight:600;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;">
+                                Route ID</th>
+                            <th
+                                style="text-align:left;padding:14px 20px;font-weight:600;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;">
+                                Donor</th>
+                            <th
+                                style="text-align:left;padding:14px 20px;font-weight:600;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;">
+                                Recipient</th>
+                            <th
+                                style="text-align:left;padding:14px 20px;font-weight:600;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;">
+                                Items</th>
+                            <th
+                                style="text-align:left;padding:14px 20px;font-weight:600;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;">
+                                ETA</th>
+                            <th
+                                style="text-align:left;padding:14px 20px;font-weight:600;color:var(--gray);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;">
+                                Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deliveryTableBody"></tbody>
+                </table>
+            </div>
+            <div style="text-align:center;margin-top:24px;">
+                <button class="btn btn-outline" onclick="refreshDeliveries()">🔄 Refresh Data</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Insights -->
+    <section style="padding:60px 0;background:var(--dark);color:white;">
+        <div class="container">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+                <div>
+                    <div class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);">
+                        BridgeFlow AI</div>
+                    <h2 style="font-family:var(--font-head);font-size:2rem;font-weight:800;margin-bottom:16px;">
+                        Real-Time Route Intelligence</h2>
+                    <p style="color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:24px;">Our AI processes 1,200+
+                        variables per delivery — traffic, perishability, distance, volunteer proximity, and need urgency
+                        — to create the optimal route in milliseconds.</p>
+                    <div style="display:flex;flex-direction:column;gap:14px;">
+                        <div style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:32px;height:32px;background:rgba(26,122,74,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                🚦</div>
+                            <div>
+                                <div style="font-weight:600;margin-bottom:3px;">Live Traffic Integration</div>
+                                <div style="font-size:.82rem;color:rgba(255,255,255,.5);">Routes update in real-time
+                                    based on road conditions and closures.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:32px;height:32px;background:rgba(26,122,74,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                🌡️</div>
+                            <div>
+                                <div style="font-weight:600;margin-bottom:3px;">Perishability Scoring</div>
+                                <div style="font-size:.82rem;color:rgba(255,255,255,.5);">Each item gets a decay score
+                                    to prioritise freshness-critical deliveries.</div>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:32px;height:32px;background:rgba(26,122,74,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                ⚡</div>
+                            <div>
+                                <div style="font-weight:600;margin-bottom:3px;">Instant Re-routing</div>
+                                <div style="font-size:.82rem;color:rgba(255,255,255,.5);">If a volunteer cancels,
+                                    BridgeFlow reassigns within seconds.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:32px;">
+                    <h3 style="font-family:var(--font-head);margin-bottom:20px;font-size:1.1rem;">Today's AI
+                        Optimisation Summary</h3>
+                    <div style="display:flex;flex-direction:column;gap:16px;" id="aiSummary"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">FoodBridge <span>AI</span></span>
+                    <p>Harnessing the power of AI to create a world where no edible food goes to waste and no human goes
+                        hungry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="index.html">Smart Dashboard</a>
+                    <a href="impact.html">Impact Reports</a>
+                    <a href="logistics.html">Live Heatmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="donate.html">Become a Donor</a>
+                    <a href="request.html">Find a Food Bank</a>
+                    <a href="volunteer.html">Volunteer Fleet</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email address" />
+                        <button title="Subscribe">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FoodBridge AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Ethical AI Charter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span id="toastMsg">Data refreshed!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

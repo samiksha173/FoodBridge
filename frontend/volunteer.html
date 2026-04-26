@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteer – FoodBridge AI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">FoodBridge <span>AI</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="donate.html">Donations</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="logistics.html">Logistics</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="nav-icon">🔔</div>
+                <div class="nav-icon">⚙️</div>
+                <a href="donate.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">Quick
+                    Donate</a>
+                <div class="nav-avatar">A</div>
+                <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);">Join the Fleet
+            </div>
+            <h1>Volunteer with FoodBridge</h1>
+            <p>Use your own vehicle to deliver hope across your city. Every trip you make feeds a family.</p>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section style="padding:60px 0;background:var(--gray-light);">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:40px;">
+                <div class="section-tag">Why Volunteer</div>
+                <h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;">Make a Real Difference</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3>Smart App</h3>
+                    <p>Receive route-optimised delivery assignments directly on your smartphone.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⏰</div>
+                    <h3>Flexible Hours</h3>
+                    <p>Volunteer when it suits you — mornings, evenings, weekends. No fixed commitment.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏅</div>
+                    <h3>Impact Tracking</h3>
+                    <p>See exactly how many meals you've delivered and the CO₂ you've helped save.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Community</h3>
+                    <p>Join a growing network of compassionate couriers across your city.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Form -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <div class="section-tag">Application Form</div>
+                <h2>Apply to Our Volunteer Fleet</h2>
+                <p>Fill in your details and we'll have you delivering within 48 hours of approval.</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" id="volFirst" placeholder="First name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" id="volLast" placeholder="Last name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="volEmail" placeholder="you@email.com" />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="volPhone" placeholder="+91 98765 43210" />
+                </div>
+                <div class="form-group">
+                    <label>City / Area *</label>
+                    <input type="text" id="volCity" placeholder="e.g. Kothrud, Pune" />
+                </div>
+                <div class="form-group">
+                    <label>Vehicle Type *</label>
+                    <select id="vehicleType">
+                        <option value="">Select vehicle…</option>
+                        <option>Bicycle</option>
+                        <option>Two-wheeler (Scooter / Motorcycle)</option>
+                        <option>Car</option>
+                        <option>Van / Small Truck</option>
+                        <option>I don't have a vehicle but can walk-deliver</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Vehicle Registration Number (optional)</label>
+                    <input type="text" id="vehicleReg" placeholder="MH-12-AB-1234" />
+                </div>
+                <div class="form-group">
+                    <label>Availability *</label>
+                    <select id="volAvail">
+                        <option value="">Select availability…</option>
+                        <option>Weekday mornings</option>
+                        <option>Weekday evenings</option>
+                        <option>Weekends only</option>
+                        <option>Anytime – fully flexible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Hours available per week</label>
+                    <select id="volHours">
+                        <option>1–3 hours</option>
+                        <option>3–6 hours</option>
+                        <option>6–10 hours</option>
+                        <option>10+ hours</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Emergency Contact Name</label>
+                    <input type="text" id="emergContact" placeholder="Name of emergency contact" />
+                </div>
+                <div class="form-group">
+                    <label>Emergency Contact Phone</label>
+                    <input type="tel" id="emergPhone" placeholder="+91 98765 43210" />
+                </div>
+                <div class="form-group">
+                    <label>Why do you want to volunteer? (optional)</label>
+                    <textarea id="volMotivation"
+                        placeholder="Tell us a bit about yourself and your motivation…"></textarea>
+                </div>
+                <button class="btn btn-primary form-submit" onclick="submitVolunteer()">Submit Application</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">FoodBridge <span>AI</span></span>
+                    <p>Harnessing the power of AI to create a world where no edible food goes to waste and no human goes
+                        hungry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="index.html">Smart Dashboard</a>
+                    <a href="impact.html">Impact Reports</a>
+                    <a href="logistics.html">Live Heatmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="donate.html">Become a Donor</a>
+                    <a href="request.html">Find a Food Bank</a>
+                    <a href="volunteer.html">Volunteer Fleet</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email address" />
+                        <button title="Subscribe">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FoodBridge AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Ethical AI Charter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span id="toastMsg">Application submitted!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

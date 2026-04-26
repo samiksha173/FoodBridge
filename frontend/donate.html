@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate Food – FoodBridge AI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">FoodBridge <span>AI</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="donate.html" class="active">Donations</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="logistics.html">Logistics</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="nav-icon">🔔</div>
+                <div class="nav-icon">⚙️</div>
+                <a href="donate.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">Quick
+                    Donate</a>
+                <div class="nav-avatar">A</div>
+                <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);">For Donors
+            </div>
+            <h1>Donate Surplus Food</h1>
+            <p>List your surplus inventory and we'll match it with communities in need within minutes.</p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section style="padding:60px 0;background:var(--gray-light);">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:40px;">
+                <div class="section-tag">Process</div>
+                <h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;">How Donating Works</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+                <div class="card" style="text-align:center;align-items:center;">
+                    <div
+                        style="width:56px;height:56px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;">
+                        1</div>
+                    <h3 style="margin-top:8px;">Register Your Business</h3>
+                    <p>Fill in your details below to join the FoodBridge donor network. Approval takes &lt;24 hours.</p>
+                </div>
+                <div class="card" style="text-align:center;align-items:center;">
+                    <div
+                        style="width:56px;height:56px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;">
+                        2</div>
+                    <h3 style="margin-top:8px;">List Surplus Items</h3>
+                    <p>Via your dashboard, log available food items, quantities, and pickup windows in real time.</p>
+                </div>
+                <div class="card" style="text-align:center;align-items:center;">
+                    <div
+                        style="width:56px;height:56px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;">
+                        3</div>
+                    <h3 style="margin-top:8px;">We Handle the Rest</h3>
+                    <p>Our volunteers pick up and our AI routes the delivery to the highest-need recipient nearby.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Form -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <div class="section-tag">Registration Form</div>
+                <h2>Register as a Donor</h2>
+                <p>Restaurants, cafes, grocery stores, and wholesalers are welcome. All food types accepted.</p>
+
+                <div id="donateForm">
+                    <div class="form-group">
+                        <label>Business / Organisation Name *</label>
+                        <input type="text" id="businessName" placeholder="e.g. The Green Café" />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Contact Person *</label>
+                            <input type="text" id="contactName" placeholder="Full name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="contactPhone" placeholder="+91 98765 43210" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="contactEmail" placeholder="you@business.com" />
+                    </div>
+                    <div class="form-group">
+                        <label>Business Type *</label>
+                        <select id="businessType">
+                            <option value="">Select type…</option>
+                            <option>Restaurant / Café</option>
+                            <option>Grocery Store / Supermarket</option>
+                            <option>Hotel / Catering</option>
+                            <option>Wholesale / Distributor</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Pickup Address *</label>
+                        <input type="text" id="pickupAddress" placeholder="Full street address" />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" id="city" placeholder="City" />
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode</label>
+                            <input type="text" id="pincode" placeholder="411001" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Typical food types you donate</label>
+                        <input type="text" id="foodTypes"
+                            placeholder="e.g. cooked meals, bread, vegetables, packaged goods" />
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred pickup window</label>
+                        <select id="pickupWindow">
+                            <option value="">Select time window…</option>
+                            <option>Morning (6 AM – 10 AM)</option>
+                            <option>Afternoon (11 AM – 3 PM)</option>
+                            <option>Evening (4 PM – 8 PM)</option>
+                            <option>Flexible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Additional notes</label>
+                        <textarea id="notes"
+                            placeholder="Any special handling instructions, allergen info, etc."></textarea>
+                    </div>
+                    <button class="btn btn-primary form-submit" onclick="submitDonation()">Submit Registration</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">FoodBridge <span>AI</span></span>
+                    <p>Harnessing the power of AI to create a world where no edible food goes to waste and no human goes
+                        hungry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="index.html">Smart Dashboard</a>
+                    <a href="impact.html">Impact Reports</a>
+                    <a href="logistics.html">Live Heatmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="donate.html">Become a Donor</a>
+                    <a href="request.html">Find a Food Bank</a>
+                    <a href="volunteer.html">Volunteer Fleet</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email address" />
+                        <button title="Subscribe">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FoodBridge AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Ethical AI Charter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span id="toastMsg">Registration submitted!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

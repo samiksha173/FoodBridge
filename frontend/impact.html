@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impact Reports – FoodBridge AI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">FoodBridge <span>AI</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="donate.html">Donations</a></li>
+                <li><a href="impact.html" class="active">Impact</a></li>
+                <li><a href="logistics.html">Logistics</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="nav-icon">🔔</div>
+                <div class="nav-icon">⚙️</div>
+                <a href="donate.html" class="btn btn-primary" style="padding:9px 18px;font-size:.85rem;">Quick
+                    Donate</a>
+                <div class="nav-avatar">A</div>
+                <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="section-tag" style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);">Our Impact
+            </div>
+            <h1>Impact Reports</h1>
+            <p>Measurable change — powered by AI, driven by compassion. Here's what we've achieved together.</p>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section style="padding:60px 0;background:var(--gray-light);">
+        <div class="container">
+            <div class="impact-grid" style="padding:0;">
+                <div class="impact-card">
+                    <div style="font-size:2rem;">🍽️</div>
+                    <div class="ic-value" id="impMeals">1,248,590</div>
+                    <div class="ic-label">Meals Shared Locally</div>
+                </div>
+                <div class="impact-card">
+                    <div style="font-size:2rem;">🌿</div>
+                    <div class="ic-value" id="impWaste">450.2</div>
+                    <div class="ic-label">Tons of Waste Diverted</div>
+                </div>
+                <div class="impact-card">
+                    <div style="font-size:2rem;">📍</div>
+                    <div class="ic-value" id="impZones">142</div>
+                    <div class="ic-label">Active Relief Zones</div>
+                </div>
+                <div class="impact-card">
+                    <div style="font-size:2rem;">🏪</div>
+                    <div class="ic-value" id="impDonors">3,840</div>
+                    <div class="ic-label">Registered Donors</div>
+                </div>
+                <div class="impact-card">
+                    <div style="font-size:2rem;">🚴</div>
+                    <div class="ic-value" id="impVols">12,700</div>
+                    <div class="ic-label">Active Volunteers</div>
+                </div>
+                <div class="impact-card">
+                    <div style="font-size:2rem;">🏙️</div>
+                    <div class="ic-value" id="impCities">28</div>
+                    <div class="ic-label">Cities Covered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bar Chart -->
+    <section class="impact-chart" style="padding:60px 0;">
+        <div class="container">
+            <div style="margin-bottom:32px;">
+                <div class="section-tag">Monthly Overview</div>
+                <h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;">Meals Delivered Per Month
+                </h2>
+            </div>
+            <div class="chart-bars" id="chartBars"></div>
+            <div style="display:flex;gap:24px;margin-top:24px;align-items:center;">
+                <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--gray);">
+                    <div style="width:14px;height:14px;background:var(--green);border-radius:3px;"></div> Meals
+                    delivered
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SDG Section -->
+    <section style="padding:60px 0;background:var(--gray-light);">
+        <div class="container">
+            <div style="text-align:center;margin-bottom:40px;">
+                <div class="section-tag">Sustainability</div>
+                <h2 style="font-family:var(--font-head);font-size:1.8rem;font-weight:800;">Aligned with UN SDGs</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+                <div class="card" style="border-left:4px solid #e5243b;">
+                    <div style="font-size:1.8rem;">🏅</div>
+                    <h3>SDG 2 — Zero Hunger</h3>
+                    <p>Directly reducing food insecurity through efficient redistribution of surplus food.</p>
+                </div>
+                <div class="card" style="border-left:4px solid #4c9f38;">
+                    <div style="font-size:1.8rem;">🌱</div>
+                    <h3>SDG 12 — Responsible Consumption</h3>
+                    <p>Diverting food from landfill and reducing methane emissions from waste.</p>
+                </div>
+                <div class="card" style="border-left:4px solid #3f7e44;">
+                    <div style="font-size:1.8rem;">🌍</div>
+                    <h3>SDG 13 — Climate Action</h3>
+                    <p>Route optimisation cuts transport emissions by up to 40% per delivery cycle.</p>
+                </div>
+                <div class="card" style="border-left:4px solid #00689d;">
+                    <div style="font-size:1.8rem;">🤝</div>
+                    <h3>SDG 17 — Partnerships</h3>
+                    <p>Building cross-sector partnerships between business, NGOs, and government.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Report CTA -->
+    <section style="padding:72px 0;text-align:center;">
+        <div class="container">
+            <div class="section-tag">Reports</div>
+            <h2 style="font-family:var(--font-head);font-size:2rem;font-weight:800;margin-bottom:12px;">Download Full
+                Impact Report</h2>
+            <p style="color:var(--gray);max-width:460px;margin:0 auto 28px;">Access our detailed 2024 Annual Impact
+                Report including city-wise data, donor statistics, and case studies.</p>
+            <button class="btn btn-primary" onclick="downloadReport()" style="padding:14px 28px;font-size:1rem;">📄
+                Download 2024 Report</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">FoodBridge <span>AI</span></span>
+                    <p>Harnessing the power of AI to create a world where no edible food goes to waste and no human goes
+                        hungry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="index.html">Smart Dashboard</a>
+                    <a href="impact.html">Impact Reports</a>
+                    <a href="logistics.html">Live Heatmap</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="donate.html">Become a Donor</a>
+                    <a href="request.html">Find a Food Bank</a>
+                    <a href="volunteer.html">Volunteer Fleet</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email address" />
+                        <button title="Subscribe">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 FoodBridge AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Ethical AI Charter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span id="toastMsg">Report download started!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
